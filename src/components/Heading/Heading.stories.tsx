@@ -11,9 +11,6 @@ export default {
     argTypes: {
         size: {
             options: ['sm', 'md', 'lg'],
-            control: {
-                type: 'ínline-radio'
-            }
         }
     }
 } as Meta<HeadingProps>

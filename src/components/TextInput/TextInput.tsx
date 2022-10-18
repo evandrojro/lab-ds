@@ -1,41 +1,48 @@
-import { Slot } from '@radix-ui/react-slot';
-import { InputHTMLAttributes, ReactNode } from 'react';
+import { InputHTMLAttributes, ReactNode } from 'react'
+import { Slot } from '@radix-ui/react-slot'
 
-interface TextInputInputProps extends InputHTMLAttributes<HTMLInputElement> { }
-export interface TextInpuRootProps {
-    children: ReactNode;
+export interface TextInputInputProps extends InputHTMLAttributes<HTMLInputElement> {
+}
+
+export interface TextInputRootProps {
+  children: ReactNode,
+}
+
+function TextInputRoot(props: TextInputRootProps) {
+  return (
+    <div className='py-4 px-3 h-12 flex items-center gap-3 rounded bg-gray-800 outline-none focus-within:ring-2 ring-green-500 w-full'>
+      {props.children}
+    </div>
+  )
 }
 
 export interface TextInputIconProps {
-    children: ReactNode;
-}
 
-const TextInpuRoot = (props: TextInpuRootProps) => {
-    <div className='flex h-12 items-center gap-3 py-4 px-3 rounded bg-gray-800 w-full focus-within:ring-2 ring-cyan-300 '>
-        {props.children}
-    </div>
-}
-TextInpuRoot.displayName = 'TextInput.Root'
-
-const TextInpuIcon = (props: TextInputIconProps) => {
-    return (
-        <Slot className='w-6 h-6 text-gray-400'>
-            {props.children}
-        </Slot>
-    )
+  children: ReactNode
 
 }
-TextInpuIcon.displayName = 'TextInput.Icon'
 
-const TextInputInput = (props: TextInputInputProps) => {
-    return (
-        <input className='bg-transparent outline-none flex-1 text-gray-100 text-xs placeholder:text-gray-400 ' {...props} />
-    )
+function TextInputIcon(props: TextInputIconProps) {
+  return (
+    <Slot
+      className='w-6 h-6 text-green-500'
+    >
+      {props.children}
+    </Slot>
+  )
 }
-TextInputInput.displayName='TextInput.Input'
+
+function TextInputInput(props: TextInputInputProps) {
+  return (
+    <input
+      className='bg-transparent flex-1 text-xsm text-green-200 placeholder:text-gray-400 outline-none'
+      {...props}
+    />
+  )
+}
 
 export const TextInput = {
-    Root: TextInpuRoot,
-    Input: TextInputInput,
-    Icon: TextInpuIcon,
+  Root: TextInputRoot,
+  Input: TextInputInput,
+  Icon: TextInputIcon,
 }
