@@ -1,8 +1,6 @@
-import './styles/global.css';
+import { Dashboard } from "./pages/Dashboard/Dashboard";
+import "./styles/global.css";
 
 export const App = () => {
-  return (
-    <h1>hello</h1>
-  )
-}
-
+  return <Dashboard />;
+};
